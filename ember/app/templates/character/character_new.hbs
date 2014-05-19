@@ -1,0 +1,340 @@
+<form role="form">
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+            <h3>Basic Statistics</h3>
+            <span class="label label-default">Basic Information</span>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <label>Character Name: </label>
+                    {{input type="text" valueBinding="character.name" class="form-control"}}
+                </li>
+                <li class="list-group-item">
+                    <label>Race: </label>
+                    {{view Ember.Select
+                    content=model.races
+                    optionValuePath="content.id"
+                    optionLabelPath="content.name"
+                    selection=character.race
+                    prompt="Select a Race"
+                    class="form-control"
+                    }}
+                </li>
+                <li class="list-group-item">
+                    <label>Job: </label>
+                    {{view Ember.Select
+                    content=model.jobs
+                    optionValuePath="content.id"
+                    optionLabelPath="content.name"
+                    selection=character.job
+                    prompt="Select a Job"
+                    class="form-control"
+                    }}
+                </li>
+                <li class="list-group-item">
+                    <label>Second Job: </label>
+                    {{view Ember.Select
+                    content=model.jobs
+                    optionValuePath="content.id"
+                    optionLabelPath="content.name"
+                    selection=character.job2
+                    prompt="Select a Second Job"
+                    class="form-control"
+                    }}
+                </li>
+                <li class="list-group-item">
+                    <label>Level: </label>
+                    {{input type="number" valueBinding="character.level" class="form-control"}}
+                    {{#if character.readyToLevel }}
+                        Ready to Level!
+                    {{/if}}
+                </li>
+                <li class="list-group-item">
+                    <label>XP: </label>
+                    {{input type="number" valueBinding="character.xp" class="form-control"}}
+                </li>
+                <li class="list-group-item">
+                    <label>Gil: </label>
+                    {{input type="number" valueBinding="character.gil" class="form-control"}}
+                </li>
+            </ul>
+            <span class="label label-default">Attributes</span>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th style="width:22%;">
+                                    Remaining: {{character.remainingAttributePoints}}
+                                </th>
+                                <th>
+                                    Base
+                                </th>
+                                <th>
+                                    Bonus
+                                </th>
+                                <th>
+                                    Total
+                                </th>
+                                <th>
+                                    Rating
+                                </th>
+                                <th>
+                                    Maximum
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Strength:
+                                </td>
+                                <td>
+                                    {{input type="number" valueBinding="character.strength" class="form-control"}}
+                                </td>
+                                <td>
+                                    {{character.bonusStrength}}
+                                </td>
+                                <td>
+                                    {{character.totalStrength}}
+                                </td>
+                                <td>
+                                    {{character.strengthRating}}
+                                </td>
+                                <td>
+                                    {{character.maxStrength}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Vitality:
+                                </td>
+                                <td>
+                                    {{input type="number" valueBinding="character.vitality" class="form-control"}}
+                                </td>
+                                <td>
+                                    {{character.bonusVitality}}
+                                </td>
+                                <td>
+                                    {{character.totalVitality}}
+                                </td>
+                                <td>
+                                    {{character.vitalityRating}}
+                                </td>
+                                <td>
+                                    {{character.maxVitality}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Agility:
+                                </td>
+                                <td>
+                                    {{input type="number" valueBinding="character.agility" class="form-control"}}
+                                </td>
+                                <td>
+                                    {{character.bonusAgility}}
+                                </td>
+                                <td>
+                                    {{character.totalAgility}}
+                                </td>
+                                <td>
+                                    {{character.agilityRating}}
+                                </td>
+                                <td>
+                                    {{character.maxAgility}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Speed:
+                                </td>
+                                <td>
+                                    {{input type="number" valueBinding="character.speed" class="form-control"}}
+                                </td>
+                                <td>
+                                    {{character.bonusSpeed}}
+                                </td>
+                                <td>
+                                    {{character.totalSpeed}}
+                                </td>
+                                <td>
+                                    {{character.speedRating}}
+                                </td>
+                                <td>
+                                    {{character.maxSpeed}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Magic:
+                                </td>
+                                <td>
+                                    {{input type="number" valueBinding="character.magic" class="form-control"}}
+                                </td>
+                                <td>
+                                    {{character.bonusMagic}}
+                                </td>
+                                <td>
+                                    {{character.totalMagic}}
+                                </td>
+                                <td>
+                                    {{character.magicRating}}
+                                </td>
+                                <td>
+                                    {{character.maxMagic}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Spirit:
+                                </td>
+                                <td>
+                                    {{input type="number" valueBinding="character.spirit" class="form-control"}}
+                                </td>
+                                <td>
+                                    {{character.bonusSpirit}}
+                                </td>
+                                <td>
+                                    {{character.totalSpirit}}
+                                </td>
+                                <td>
+                                    {{character.spiritRating}}
+                                </td>
+                                <td>
+                                    {{character.maxSpirit}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label>Rolled HP:</label>
+                                </td>
+                                <td colspan="5">
+                                    {{input type="number" valueBinding="character.baseHP" class="form-control"}}
+                                </td>
+                            </tr>
+                        <tr>
+                            <td>
+                                <label>Rolled MP:</label>
+                            </td>
+                            <td colspan="5">
+                                {{input type="number" valueBinding="character.baseMP" class="form-control"}}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </li>
+                </ul>
+
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <h3>Calculated Statistics</h3>
+            <div class="col-md-6 col-lg-6">
+                <span class="label label-default">Job Stats</span>
+                <ul class="list-group">
+                    <li class="list-group-item">Hit Die: <input {{bind-attr value=character.hpDie}} class="form-control" type="number" disabled="disabled"/></li>
+                    <li class="list-group-item">Magic Die: <input {{bind-attr value=character.mpDie}} class="form-control" type="number" disabled="disabled"/></li>
+                    <li class="list-group-item">Accuracy Bonus: <input {{bind-attr value=character.accuracyBonus}} class="form-control" type="number" disabled="disabled"/></li>
+                    <li class="list-group-item">Skill Points: <input {{bind-attr value=character.job.skillPoints}} class="form-control" type="number" disabled="disabled"/></li>
+                    <li class="list-group-item">Aptitude: <input {{bind-attr value=character.job.aptitude.name}} class="form-control" type="text" disabled="disabled"/></li>
+                    {{#if character.job2}}<li class="list-group-item">Aptitude 2: <input {{bind-attr value=character.job2.aptitude.name}} class="form-control" type="text" disabled="disabled"/></li>{{/if}}
+                    <li class="list-group-item">Weapon Skills: <ul>{{#each item in  character.weaponSkills}} <li>{{item.name}}</li>{{else}} <li>No Skills</li> {{/each}}</ul></li>
+                    <li class="list-group-item">Armour Skills: <ul>{{#each item in  character.armourSkills}} <li>{{item.name}}</li>{{else}} <li>No Skills</li> {{/each}}</ul></li>
+                    {{#if model.aptitudes}}
+                    <li class="list-group-item">Bonus Aptitudes: {{view Ember.Select class="form-control" optionLabelPath="content.name" optionValuePath="content" selection=model.user.character.bonusAptitudes.content multiple="true" content=model.aptitudes}}</li>
+                    {{/if}}
+                </ul>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <span class="label label-default">Calculated Stats</span>
+                <ul class="list-group">
+                    <li class="list-group-item">Total HP: <input {{bind-attr value=character.totalHP}} class="form-control" type="number" disabled="disabled"/></li>
+                    <li class="list-group-item">Total MP: <input {{bind-attr value=character.totalMP}} class="form-control" type="number" disabled="disabled"/></li>
+                    <li class="list-group-item">Evasion: <input {{bind-attr value=character.evasion}} class="form-control" type="number" disabled="disabled"/></li>
+                    <li class="list-group-item">Magical Evasion: <input {{bind-attr value=character.magicEvasion}} class="form-control" type="number" disabled="disabled"/></li>
+                    <li class="list-group-item">Armour: <input {{bind-attr value=character.armour}} class="form-control" type="number" disabled="disabled"/></li>
+                    <li class="list-group-item">Magical Armour: <input {{bind-attr value=character.magicArmour}} class="form-control" type="number" disabled="disabled"/></li>
+                    <li class="list-group-item">Dexterity: <input {{bind-attr value=character.dexterity}} class="form-control" type="number" disabled="disabled"/></li>
+                    <li class="list-group-item">Mind: <input {{bind-attr value=character.mind}} class="form-control" type="number" disabled="disabled"/></li>
+                    <li class="list-group-item">Accuracy: <input {{bind-attr value=character.accuracy}} class="form-control" type="number" disabled="disabled"/></li>
+                    <li class="list-group-item">Magical Accuracy: <input {{bind-attr value=character.magicalAccuracy}} class="form-control" type="number" disabled="disabled"/></li>
+                    <li class="list-group-item">Expertise: <input {{bind-attr value=character.expertise}} class="form-control" disabled="disabled"/></li>
+                    {{#if character.job2}}{{#if character.expertise2}}<li class="list-group-item">Expertise 2: <input {{bind-attr value=character.expertise2}} class="form-control" disabled="disabled"/></li>{{/if}}{{/if}}
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+            <div class="col-md-6 col-lg-6">
+                <span class="label label-default">Equipment</span>
+                <ul class="list-group">
+                    <li class="list-group-item">{{view Ember.Select content=character.equipableWeapons optionValuePath="content" optionLabelPath="content.baseItem.name" selection=character.weaponSlot prompt="Main Hand" class="form-control" }}</li>
+
+                    <li class="list-group-item">{{view Ember.Select
+                        content=character.equipableWeapons
+                        optionValuePath="content"
+                        optionLabelPath="content.baseItem.name"
+                        selection=character.secondWeaponSlot
+                        prompt="Off Hand"
+                        class="form-control"
+                        }}</li>
+
+                    <li class="list-group-item">{{view Ember.Select
+                        content=character.equipableArmour
+                        optionValuePath="content"
+                        optionLabelPath="content.baseItem.name"
+                        selection=character.bodySlot
+                        prompt="Armour"
+                        class="form-control"
+                        }}</li>
+
+                    <li class="list-group-item">{{view Ember.Select
+                        content=character.equipableHelms
+                        optionValuePath="content"
+                        optionLabelPath="content.baseItem.name"
+                        selection=character.headSlot
+                        prompt="Head"
+                        class="form-control"
+                        }}</li>
+                    <li class="list-group-item">{{view Ember.Select
+                        content=character.equipableGloves
+                        optionValuePath="content"
+                        optionLabelPath="content.baseItem.name"
+                        selection=character.handSlot
+                        prompt="Hands"
+                        class="form-control"
+                        }}</li>
+
+                    <li class="list-group-item">{{view Ember.Select
+                        content=character.equipableAccessories
+                        optionValuePath="content"
+                        optionLabelPath="content.baseItem.name"
+                        selection=character.accessorySlot
+                        prompt="Accessory"
+                        class="form-control"
+                        }}</li>
+
+                    <li class="list-group-item">{{view Ember.Select
+                        content=character.equipableAccessories
+                        optionValuePath="content"
+                        optionLabelPath="content.baseItem.name"
+                        selection=character.accessorySlot2
+                        prompt="Accessory"
+                        class="form-control"
+                        }}</li>
+                </ul>
+            </div>
+        <div class="col-md-6 col-lg-6">
+            <div class="form-group">
+                {{#unless character.id}}
+                <button class="btn btn-default" {{ action save target="controller" }}>
+                <span class="glyphicon glyphicon-floppy-disk"></span> Create
+                </button>
+                {{/unless}}
+            </div>
+        </div>
+    </div>
+</form>
+
+
+{{outlet}}

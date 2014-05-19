@@ -1,0 +1,248 @@
+<form role="form">
+    <div class="row hidden-print">
+        <div class="col-md-12">
+            <h3>Print Monsters</h3>
+        </div>
+    </div>
+    <div class="row hidden-print monster-selector">
+        <div class="col-md-12">
+            {{view App.MultiSelect
+            content=model.user.monsters
+            multiple=true
+            optionValuePath="content.id"
+            optionLabelPath="content.name"
+            selection=controller.selectedMonsters
+            class="form-control"
+            placeholder="Select monsters to print"
+            }}
+        </div>
+    </div>
+
+    {{#eachIndexed monster in controller.selectedMonsters}}
+        {{#if even}}
+            <div class="row page-break">
+        {{/if}}
+        <div class="col-md-6 col-md-print-6">
+            <table class="table table-condensed table-bordered">
+                <tr>
+                    <td>
+                        <label>Name:</label>{{monster.name}}
+                    </td>
+                    <td>
+                        <label>Category:</label>{{monster.category}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Family:</label>{{monster.family}}
+                    </td>
+                    <td>
+                        <label>Location:</label>{{monster.location}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Intelligence:</label>{{monster.intelligence}}
+                    </td>
+                    <td>
+                        <label>Reaction:</label>{{monster.reactionFormatted}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Frequency:</label>{{monster.frequencyFormatted}}
+                    </td>
+                    <td>
+                        <label>Encounter Size:</label>{{monster.encounterSizeMonsters}}/{{monster.encounterSizePCs}}
+                    </td>
+                </tr>
+            </table>
+            <table class="table table-condensed table-bordered">
+                <tr>
+                    <td>
+                        <label>STR</label>
+                    </td>
+                    <td>
+                        <label>VIT</label>
+                    </td>
+                    <td>
+                        <label>AGI</label>
+                    </td>
+                    <td>
+                        <label>SPD</label>
+                    </td>
+                    <td>
+                        <label>MAG</label>
+                    </td>
+                    <td>
+                        <label>SPR</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                         {{monster.totalStrength}}
+                    </td>
+                    <td>
+                        {{monster.totalVitality}}
+                    </td>
+                    <td>
+                        {{monster.totalAgility}}
+                    </td>
+                    <td>
+                        {{monster.totalSpeed}}
+                    </td>
+                    <td>
+                        {{monster.totalMagic}}
+                    </td>
+                    <td>
+                        {{monster.totalSpirit}}
+                    </td>
+                </tr>
+            </table>
+            <table class="table table-condensed table-bordered">
+                <tr>
+                    <td>
+                        <label>ACC</label>
+                    </td>
+                    <td>
+                        <label>M.ACC</label>
+                    </td>
+                    <td>
+                        <label>ARM</label>
+                    </td>
+                    <td>
+                        <label>M.ARM</label>
+                    </td>
+                    <td>
+                        <label>EVA</label>
+                    </td>
+                    <td>
+                        <label>M.EVA</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {{monster.accuracy}}
+                    </td>
+                    <td>
+                        {{monster.magicalAccuracy}}
+                    </td>
+                    <td>
+                        {{monster.armour}}
+                    </td>
+                    <td>
+                        {{monster.magicArmour}}
+                    </td>
+                    <td>
+                        {{monster.evasion}}
+                    </td>
+                    <td>
+                        {{monster.magicEvasion}}
+                    </td>
+                </tr>
+            </table>
+            {{#if monster.skills}}
+            <table class="table table-condensed table-bordered">
+
+                    <tr>
+                        {{#each skill in monster.skills}}
+                        <td>
+                            <label>{{skill.baseSkill.name}}:</label>{{skill.level}}
+                        </td>
+                        {{/each}}
+                    </tr>
+
+            </table>
+            {{/if}}
+
+
+                {{#each attack in monster.monsterAttacksAttacks}}
+                <table class="table table-condensed table-bordered">
+                <tr>
+                    <td>
+                        <label>Name:</label>{{attack.name}}
+                    </td>
+                    <td>
+                        <label>Damage:</label>{{attack.currentDamageEquation}}
+                    </td>
+                    <td>
+                        <label>COS:</label>{{attack.chanceOfSuccess}}
+                    </td>
+                </tr>
+                {{#each modifier in attack.modifiers}}
+                <tr>
+                    <td>
+                        <label>{{modifier.modifier.name}}</label>
+                    </td>
+                    <td>
+                        {{#if modifier.isSpecialAttack}}
+                            <label>COS:</label>{{attack.statusChanceOfSuccess}}
+                        {{/if}}
+                        {{#if modifier.modifier.cos}}
+                            <label>COS:</label>{{modifier.modifier.cos}}%
+                        {{/if}}
+                    </td>
+                    <td>
+                        {{modifier.options}}
+                    </td>
+                </tr>
+                {{/each}}
+                </table>
+                {{/each}}
+                {{#each attack in monster.monsterAttacksAbilities}}
+                <table class="table table-condensed table-bordered">
+                <tr>
+                    <td colspan="2">
+                        <label>Name:</label>{{attack.name}}
+                    </td>
+                </tr>
+                {{#each modifier in attack.modifiers}}
+                <tr>
+                    <td>
+                        <label>{{modifier.modifier.name}}</label>
+                    </td>
+                    <td>
+                        {{modifier.options}}
+                    </td>
+                </tr>
+                {{/each}}
+                </table>
+                {{/each}}
+                {{#each attack in monster.monsterAttacksMagic}}
+            <table class="table table-condensed table-bordered">
+                <tr>
+                    <td colspan="2">
+                        <label>Name:</label>{{attack.name}}
+                    </td>
+                </tr>
+                {{#each modifier in attack.modifiers}}
+                <tr>
+                    <td>
+                        <label>{{modifier.modifier.name}}</label>
+                    </td>
+                    <td>
+                        {{modifier.options}}
+                    </td>
+                </tr>
+                {{/each}}
+                </table>
+                {{/each}}
+
+
+            <table class="table table-condensed table-bordered">
+                <tr>
+                    <td>
+                        <label>Gil:</label>{{monster.totalMonsterGil}}
+                    </td>
+                    <td>
+                        <label>XP:</label>{{monster.totalMonsterXP}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        {{#if odd}}
+        </div>
+        {{/if}}
+    {{/eachIndexed}}
+
+</form>

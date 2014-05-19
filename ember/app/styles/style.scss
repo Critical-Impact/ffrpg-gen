@@ -1,0 +1,152 @@
+@import "bootstrap-sass/lib/bootstrap";
+
+/* Put your CSS here */
+html, body {
+    margin: 30px 0;
+}
+
+.item-icon
+{
+  background:url(../images/items.png) no-repeat;
+  width:18px;
+  height:18px;
+  display:none;
+}
+
+.item-icon.bows-1
+{
+  display:inline-block;
+  background-position:-202px -23px;
+  width:13px;
+  height:13px;
+}
+
+.item-icon.bows-3
+{
+  display:inline-block;
+  background-position:-220px -41px;
+  width: 15px;
+  height: 15px;
+}
+
+.item-icon.bows-4
+{
+  display:inline-block;
+  background-position: -220px -81px;
+  width: 15px;
+  height: 15px;
+}
+
+.item-icon.bows-2
+{
+  display:inline-block;
+  background-position: -220px -100px;
+  width: 16px;
+  height: 16px;
+}
+
+.item-icon.bows-5
+{
+  display:inline-block;
+  background-position: -220px -140px;
+  width: 16px;
+  height: 16px;
+}
+
+.item-icon.bows-6
+{
+  display:inline-block;
+  background-position:-200px -302px;
+  width: 14px;
+  height: 14px;
+
+}
+
+.item-icon.bows-7
+{
+  display:inline-block;
+  background-position: -220px -220px;
+  width: 16px;
+  height: 16px;
+}
+
+.item-icon.bows-8
+{
+  display:inline-block;
+  background-position: -220px -61px;
+  width: 15px;
+  height: 15px;
+}
+
+.item-icon.bows-8
+{
+  display:inline-block;
+  background-position:no-repeat -220px -1px;
+  width: 15px;
+  height: 15px;
+}
+.item-icon.bows-10
+{
+  display:inline-block;
+  background-position: -220px -120px;
+  width: 16px;
+  height: 16px;
+}
+
+
+.image-container
+{
+  position:relative;
+  margin-bottom:20px;
+}
+
+.image-container img, .image-container canvas
+{
+  position:absolute;
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 999px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+.link-cursor
+{
+  cursor:pointer;
+}
+
+select.ability-box
+{
+  height:400px;
+}
+
+.character-load div{
+  margin-bottom:5px;
+}
+
+div.monster-selector
+{
+  margin-bottom:20px;
+}
+
+.small-save
+{
+  float:right;
+  position:relative;
+  margin-right:8px;
+}

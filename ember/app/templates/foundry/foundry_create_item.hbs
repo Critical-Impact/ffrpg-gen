@@ -1,0 +1,156 @@
+<form role="form">
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+            <h3>Item Creation</h3>
+            <span class="label label-default">Basic Information</span>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <label>Item Name: </label>
+                    {{input type="text" valueBinding="model.baseItem.name" class="form-control"}}
+                </li>
+                <li class="list-group-item">
+                    <label>Item Type: </label>
+                    {{view Ember.Select
+                    content=controller.weaponTypes
+                    optionValuePath="content.id"
+                    optionLabelPath="content.name"
+                    selection=model.baseItem.itemType
+                    prompt="Select a Weapon Name"
+                    class="form-control"
+                    }}
+                </li>
+                <li class="list-group-item">
+                    <label>Tier: </label>
+                    {{view Ember.Select
+                    content=model.tiers
+                    selection=model.baseItem.tier
+                    prompt="Select a Tier"
+                    class="form-control"
+                    }}
+                </li>
+                {{#if model.baseItem.isWeapon }}
+                <li class="list-group-item" >
+                    <label>Damage Scale: </label>
+                    {{input type="number" valueBinding="model.baseItem.damageScale" class="form-control"}}
+                </li>
+                <li class="list-group-item" >
+                    <label>Damage Attribute: </label>
+                    {{view Ember.Select
+                    content=controllers.application.skillsList
+                    optionValuePath="content.id"
+                    optionLabelPath="content.name"
+                    value=model.baseItem.damageAttribute
+                    class="form-control"
+                    }}
+                </li>
+                <li class="list-group-item" >
+                    <label>Damage Die Count(no of die): </label>
+                    {{input type="number" valueBinding="model.baseItem.damageDieCount" class="form-control"}}
+                </li>
+                <li class="list-group-item" >
+                    <label>Damage Die Size(4,6,etc): </label>
+                    {{input type="number" valueBinding="model.baseItem.damageDieSize" class="form-control"}}
+                </li>
+                <li class="list-group-item" >
+                    <label>Damage Equation: </label>
+                    {{ model.baseItem.damageEquation }}
+                </li>
+                {{/if}}
+                {{#if model.baseItem.isArmour }}
+                <li class="list-group-item" >
+                    <label>Armour: </label>
+                    {{input type="number" valueBinding="model.baseItem.armour" class="form-control"}}
+                </li>
+                <li class="list-group-item" >
+                    <label>Magical Armour: </label>
+                    {{input type="number" valueBinding="model.baseItem.magicalArmour" class="form-control"}}
+                </li>
+                <li class="list-group-item" >
+                    <label>Evasion: </label>
+                    {{input type="number" valueBinding="model.baseItem.evasion" class="form-control"}}
+                </li>
+                <li class="list-group-item" >
+                    <label>Magical Evasion: </label>
+                    {{input type="number" valueBinding="model.baseItem.magicalEvasion" class="form-control"}}
+                </li>
+                {{/if}}
+                <li class="list-group-item">
+                    <label>Craft Points Required: </label><br>
+                    {{#if model.baseItem.requiredCraftPointsTier1 }}
+                        Tier 1: {{ model.baseItem.requiredCraftPointsTier1 }}<br>
+                    {{/if}}
+                    {{#if model.baseItem.requiredCraftPointsTier2 }}
+                    Tier 2: {{ model.baseItem.requiredCraftPointsTier2 }}<br>
+                    {{/if}}
+                    {{#if model.baseItem.requiredCraftPointsTier3 }}
+                    Tier 3: {{ model.baseItem.requiredCraftPointsTier3 }}<br>
+                    {{/if}}
+                    {{#if model.baseItem.requiredCraftPointsTier4 }}
+                    Tier 4: {{ model.baseItem.requiredCraftPointsTier4 }}<br>
+                    {{/if}}
+                    {{#if model.baseItem.requiredCraftPointsTier5 }}
+                    Tier 5: {{ model.baseItem.requiredCraftPointsTier5 }}<br>
+                    {{/if}}
+                    {{#if model.baseItem.requiredCraftPointsTier6 }}
+                    Tier 6: {{ model.baseItem.requiredCraftPointsTier6 }}<br>
+                    {{/if}}
+                    {{#if model.baseItem.requiredCraftPointsTier7 }}
+                    Tier 7: {{ model.baseItem.requiredCraftPointsTier7 }}<br>
+                    {{/if}}
+                    {{#if model.baseItem.requiredCraftPointsTier8 }}
+                    Tier 8: {{ model.baseItem.requiredCraftPointsTier8 }}<br>
+                    {{/if}}
+                    {{#if model.baseItem.requiredCraftPointsTier9 }}
+                    Tier 9: {{ model.baseItem.requiredCraftPointsTier9 }}<br>
+                    {{/if}}
+                    {{#if model.baseItem.requiredCraftPointsTier10 }}
+                    Tier 10: {{ model.baseItem.requiredCraftPointsTier10 }}<br>
+                    {{/if}}
+                </li>
+                <li class="list-group-item">
+                    <label>Time Required: </label>
+                    {{ model.baseItem.requiredCraftTime }}
+                </li>
+            </ul>
+            <button {{ action save  }} class="btn btn-success">Save</button>
+        </div>
+        <div class="col-md-6 col-lg-6">
+
+            <span class="label label-default">Abilities</span>
+            <table class="table table-striped table-condensed">
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Tier
+                        </th>
+                        <th>
+                            Craft Points
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+
+
+                {{#checkbox-select model=model.baseItem propertyPath="abilities" elements=controller.itemAbilities}}
+                    <tr>
+                        <td>
+                            {{model.name}}
+                        </td>
+                        <td>
+                            {{model.tier}}
+                        </td>
+                        <td>
+                            {{model.craftPoints}}
+                        </td>
+                        <td>
+                            {{view Ember.Checkbox checkedBinding="selected"}}
+                        </td>
+                    </tr>
+                {{/checkbox-select}}
+            </table>
+        </div>
+    </div>
+</form>

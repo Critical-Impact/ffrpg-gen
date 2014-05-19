@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FFRPG Character Creator</title>
+
+        <!-- build:css styles/main.css -->
+        <link rel="stylesheet" media="all" href="styles/style.css">
+        <!-- endbuild -->
+
+        <!-- build:css styles/print.css -->
+        <link rel="stylesheet" media="print" href="styles/print.css">
+        <!-- endbuild -->
+
+        <!-- build:css styles/extras.css -->
+        <link rel="stylesheet" href="bower_components/ember-addons.bs_for_ember/dist/css/bs-growl-notifications.min.css">
+        <link rel="stylesheet" href="bower_components/hint.css/hint.min.css">
+        <link rel="stylesheet" href="bower_components/select2/select2.css">
+        <link rel="stylesheet" href="bower_components/select2/select2-bootstrap.css">
+        <!-- endbuild -->
+</head>
+    <body>
+        <script type="text/javascript">
+            ENV = {FEATURES: {'query-params-new': true}};
+        </script>
+        <!-- build:js scripts/components.js -->
+        <script src="bower_components/jquery/jquery.js"></script>
+        <script src="ember_tmp/handlebars.js"></script>
+        <script src="ember_tmp/ember.js"></script>
+        <script src="ember_tmp/ember-data.js"></script>
+        <script src="bower_components/ember-simple-auth/ember-simple-auth.js"></script>
+        <script src="bower_components/ember-simple-auth/ember-simple-auth-oauth2.js"></script>
+        <script src="bower_components/ember-addons.bs_for_ember/dist/js/bs-core.min.js"></script>
+        <script src="bower_components/ember-addons.bs_for_ember/dist/js/bs-modal.min.js"></script>
+        <script src="bower_components/ember-addons.bs_for_ember/dist/js/bs-button.min.js"></script>
+        <script src="bower_components/ember-addons.bs_for_ember/dist/js/bs-notifications.min.js"></script>
+        <script src="bower_components/ember-addons.bs_for_ember/dist/js/bs-growl-notifications.min.js"></script>
+        <script src="bower_components/ember-addons.bs_for_ember/dist/js/bs-progressbar.min.js"></script>
+        <script src="bower_components/momentjs/min/moment.min.js"></script>
+        <script src="bower_components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+        <script src="bower_components/jquery-ui/ui/minified/jquery.ui.widget.min.js"></script>
+        <script src="bower_components/jquery-ui/ui/minified/jquery.ui.mouse.min.js"></script>
+        <script src="bower_components/jquery-ui/ui/minified/jquery.ui.draggable.min.js"></script>
+        <script src="bower_components/jquery-ui/ui/minified/jquery.ui.droppable.min.js"></script>
+        <script src="bower_components/jquery-ui/ui/minified/jquery.ui.resizable.min.js"></script>
+        <script src="bower_components/jquery-ui/ui/minified/jquery.ui.selectable.min.js"></script>
+        <script src="bower_components/jquery-ui/ui/minified/jquery.ui.sortable.min.js"></script>
+        <script src="bower_components/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+        <script src="bower_components/mathjs/dist/math.min.js"></script>
+        <script src="bower_components/fastclick/lib/fastclick.js"></script>
+        <script src="bower_components/ember-inplace-edit/inplace_field_view.js"></script>
+        <script src="bower_components/jcrop/js/jquery.Jcrop.min.js"></script>
+        <script src="bower_components/select2/select2.min.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js(.tmp) scripts/templates.js -->
+        <script src="scripts/compiled-templates.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js(.tmp) scripts/main.js -->
+        <script src="scripts/combined-scripts.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js scripts/plugins.js -->
+        <script src="bower_components/bootstrap-sass/js/affix.js"></script>
+        <script src="bower_components/bootstrap-sass/js/alert.js"></script>
+        <script src="bower_components/bootstrap-sass/js/dropdown.js"></script>
+        <script src="bower_components/bootstrap-sass/js/tooltip.js"></script>
+        <script src="bower_components/bootstrap-sass/js/modal.js"></script>
+        <script src="bower_components/bootstrap-sass/js/transition.js"></script>
+        <script src="bower_components/bootstrap-sass/js/button.js"></script>
+        <script src="bower_components/bootstrap-sass/js/popover.js"></script>
+        <script src="bower_components/bootstrap-sass/js/carousel.js"></script>
+        <script src="bower_components/bootstrap-sass/js/scrollspy.js"></script>
+        <script src="bower_components/bootstrap-sass/js/collapse.js"></script>
+        <script src="bower_components/bootstrap-sass/js/tab.js"></script>
+
+        <!-- endbuild -->
+        <script type="text/javascript">
+            $(function()
+            {
+                $(document).on('click','.navbar-collapse.in',function(e) {
+                    if( $(e.target).is('a') ) {
+                        $(this).collapse('hide');
+                    }
+                });
+            });
+        </script>
+
+</body>
+</html>

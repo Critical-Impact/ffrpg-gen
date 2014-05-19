@@ -1,0 +1,23 @@
+.col-md-print-6
+{
+  float:left;
+  width:50%;
+}
+
+@page {
+  margin: 0;
+}
+
+body {
+  width: 100%;
+}
+
+.container
+{
+  width:100% !important;
+}
+
+.page-break
+{
+  page-break-after: always;
+}

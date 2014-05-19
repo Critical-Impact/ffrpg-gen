@@ -1,0 +1,125 @@
+<form role="form">
+    <div class="form-group">
+
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+            <h3>Equipment</h3>
+
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+            <h3>Your Items</h3>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                           Tier
+                        </th>
+
+
+                        <th>
+
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each item in model.user.character.equipableItems}}
+                    <tr>
+                        <td>
+                            {{ item.baseItem.name}}
+                        </td>
+
+
+                        <td>
+                            {{ item.baseItem.tier}}
+                        </td>
+
+                        <td>
+                            <button class="btn btn-danger" {{ action remove_item item target="controller" }}>
+                            <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    {{ else}}
+                    <tr>
+                        <td colspan="4">
+                            No items found
+                        </td>
+                    </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <h3>Items List</h3>
+            <span class="label label-default">Items</span>
+            <ul class="nav  nav-tabs">
+            {{#each itemCategory in model.itemCategories}}
+                {{#link-to 'character.items' (query-params itemCategory=itemCategory.id) tagName='li'}}<a href="javascript:;" {{bind-attr href="view.href"}}>{{itemCategory.name}}</a>{{/link-to}}
+            {{/each}}
+            </ul>
+
+            <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Cost
+                    </th>
+                    <th>
+                        Availability
+                    </th>
+                    <th>
+                        Tier
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each item in model.items}}
+                <tr>
+                    <td>
+                        {{ item.name}}
+                    </td>
+                    <td>
+                        {{ item.formattedCost}}
+                    </td>
+                    <td>
+                        {{ item.formattedAvailability}}
+                    </td>
+                    <td>
+                        {{ item.tier}}
+                    </td>
+
+                    <td>
+                        <button class="btn btn-success" {{ action add_item item target="controller" }} value="+">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </td>
+                </tr>
+                {{ else}}
+                <tr>
+                    <td colspan="4">
+                        No items found
+                    </td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</form>

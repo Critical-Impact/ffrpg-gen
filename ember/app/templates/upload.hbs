@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Select an image for {{view.for}}</div>
+            <div class="panel-body">
+                <span class="btn btn-default btn-file">
+                    <input {{action "fileSelectionChanged" target="view" on="change"}} type="file">
+                    Upload
+                </span>
+                <img width="500" {{bind-attr src=view.currentFile}} id="toCrop" />
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Cropped Image</div>
+            <div class="panel-body">
+                <div class="image-container" {{bind-attr style=view.style}}>
+                    <canvas id="canvasThumbResult"  {{bind-attr width=view.width}} {{bind-attr height=view.height}}></canvas>
+                    <img {{bind-attr width=view.width}} {{bind-attr height=view.height}} {{bind-attr src=view.setFile}} id="previewImage" />
+                </div>
+                <button class="btn btn-default" {{action "crop" target="view" }} >Crop</button>
+                <button class="btn btn-success" {{action "save" target="view" }} >Save</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+

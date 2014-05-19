@@ -1,0 +1,1172 @@
+<form role="form">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Monster Creation</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+            <span class="label label-default">Monster Profile</span>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <label>Monster Name: </label>
+                    {{input type="text" valueBinding="character.name" class="form-control"}}
+                </li>
+                <li class="list-group-item">
+                    <label>Category: </label>
+                    {{input type="text" valueBinding="character.category" class="form-control"}}
+                </li>
+                <li class="list-group-item">
+                    <label>Family: </label>
+                    {{input type="text" valueBinding="character.family" class="form-control"}}
+                </li>
+                <li class="list-group-item">
+                    <label>Location: </label>
+                    {{input type="text" valueBinding="character.location" class="form-control"}}
+                </li>
+
+            </ul>
+
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <span class="label label-default">Monster Profile</span>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <label>Intelligence: </label>
+                    {{input type="text" valueBinding="character.intelligence" class="form-control"}}
+                </li>
+                <li class="list-group-item">
+                    <label>Reaction: </label>
+                    {{view Ember.Select
+                    content=controllers.application.reaction
+                    optionValuePath="content.id"
+                    optionLabelPath="content.name"
+                    value=character.reaction
+                    class="form-control"
+                    }}
+                </li>
+                <li class="list-group-item">
+                    <label>Frequency: </label>
+                    {{view Ember.Select
+                    content=controllers.application.frequency
+                    optionValuePath="content.id"
+                    optionLabelPath="content.name"
+                    value=character.frequency
+                    class="form-control"
+                    }}
+                </li>
+                <li class="list-group-item">
+                    <label>Encounter Size: </label>
+                    <table style="width:100%">
+                        <tr>
+                            <td>
+                                {{input type="number" valueBinding="character.encounterSizeMonsters" class="form-control"}}
+                            </td>
+                            <td>
+                                /
+                            </td>
+                            <td>
+                                {{input type="number" valueBinding="character.encounterSizePCs" class="form-control"}}
+                            </td>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <span class="label label-default">Attributes and Statistics</span>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>
+
+                            </th>
+                            <th>
+                                Strength
+                            </th>
+                            <th>
+                                Vitality
+                            </th>
+                            <th>
+                                Agility
+                            </th>
+                            <th>
+                                Speed
+                            </th>
+                            <th>
+                                Magic
+                            </th>
+                            <th>
+                                Spirit
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                Base:
+                            </td>
+                            <td>
+                                {{input type="number" valueBinding="character.strength" class="form-control"}}
+                            </td>
+                            <td>
+                                {{input type="number" valueBinding="character.vitality" class="form-control"}}
+                            </td>
+                            <td>
+                                {{input type="number" valueBinding="character.agility" class="form-control"}}
+                            </td>
+                            <td>
+                                {{input type="number" valueBinding="character.speed" class="form-control"}}
+                            </td>
+                            <td>
+                                {{input type="number" valueBinding="character.magic" class="form-control"}}
+                            </td>
+                            <td>
+                                {{input type="number" valueBinding="character.spirit" class="form-control"}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Total:
+                            </td>
+                            <td>
+                                <input {{bind-attr value=character.totalStrength}} class="form-control" type="number" disabled='disabled'>
+                            </td>
+                            <td>
+                                <input {{bind-attr value=character.totalVitality}} class="form-control" type="number" disabled='disabled'>
+                            </td>
+                            <td>
+                                <input {{bind-attr value=character.totalAgility}} class="form-control" type="number" disabled='disabled'>
+                            </td>
+                            <td>
+                                <input {{bind-attr value=character.totalSpeed}} class="form-control" type="number" disabled='disabled'>
+                            </td>
+                            <td>
+                                <input {{bind-attr value=character.totalMagic}} class="form-control" type="number" disabled='disabled'>
+                            </td>
+                            <td>
+                                <input {{bind-attr value=character.totalSpirit}} class="form-control" type="number" disabled='disabled'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Rating:
+                            </td>
+                            <td>
+                                <input {{bind-attr value=character.strengthRating}} class="form-control" type="number" disabled='disabled'>
+                            </td>
+                            <td>
+                                <input {{bind-attr value=character.vitalityRating}} class="form-control" type="number" disabled='disabled'>
+                            </td>
+                            <td>
+                                <input {{bind-attr value=character.agilityRating}} class="form-control" type="number" disabled='disabled'>
+                            </td>
+                            <td>
+                                {{character.jobSpeed}}
+                                <input {{bind-attr value=character.speedRating}} class="form-control" type="number" disabled='disabled'>
+                            </td>
+                            <td>
+                                <input {{bind-attr value=character.magicRating}} class="form-control" type="number" disabled='disabled'>
+                            </td>
+                            <td>
+                                <input {{bind-attr value=character.spiritRating}} class="form-control" type="number" disabled='disabled'>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li class="list-group-item">
+                    <label>Level: </label>
+                    {{input type="number" valueBinding="character.level" class="form-control"}}
+                </li>
+                <li class="list-group-item">
+                    <label>Monster Type: </label>
+                    {{view Ember.Select
+                    content=controllers.application.monsterTypes
+                    optionValuePath="content.id"
+                    optionLabelPath="content.name"
+                    value=character.monsterType
+                    class="form-control"
+                    }}
+                </li>
+                <li class="list-group-item">
+                    <label>Hit Base: </label>
+                    {{view Ember.Select
+                    content=controllers.application.hitBases
+                    optionValuePath="content.id"
+                    optionLabelPath="content.name"
+                    value=character.hitBase
+                    class="form-control"
+                    }}
+                </li>
+                <li class="list-group-item">
+                    <label>Magic Base: </label>
+                    {{view Ember.Select
+                    content=controllers.application.magicBases
+                    optionValuePath="content.id"
+                    optionLabelPath="content.name"
+                    value=character.magicBase
+                    class="form-control"
+                    }}
+                </li>
+                <li class="list-group-item">
+                    <label>Armour Base: </label>
+                    {{view Ember.Select
+                    content=controllers.application.armourBases
+                    optionValuePath="content.id"
+                    optionLabelPath="content.name"
+                    value=character.armourBase
+                    class="form-control"
+                    }}
+                </li>
+                <li class="list-group-item">
+                    <label>Magic Armour Base: </label>
+                    {{view Ember.Select
+                    content=controllers.application.magicArmourBases
+                    optionValuePath="content.id"
+                    optionLabelPath="content.name"
+                    value=character.magicArmourBase
+                    class="form-control"
+                    }}
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <span class="label label-default">Attributes and Statistics</span>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <label>Attribute Points Remaining: </label>
+                    {{character.remainingAttributePoints}}
+                </li>
+                <li class="list-group-item">
+                    <label>HP: </label>
+                    {{character.totalHP}}
+                </li>
+                <li class="list-group-item">
+                    <label>MP: </label>
+                    {{character.totalMP}}
+                </li>
+                <li class="list-group-item">
+                    <label>Accuracy: </label>
+                    {{character.accuracy}}
+                </li>
+                <li class="list-group-item">
+                    <label>Magic Accuracy: </label>
+                    {{character.magicalAccuracy}}
+                </li>
+                <li class="list-group-item">
+                    <label>Dexterity: </label>
+                    {{character.dexterity}}
+                </li>
+                <li class="list-group-item">
+                    <label>Mind: </label>
+                    {{character.mind}}
+                </li>
+                <li class="list-group-item">
+                    <label>Armour: </label>
+                    {{character.armour}}
+                </li>
+                <li class="list-group-item">
+                    <label>Magical Armour: </label>
+                    {{character.magicArmour}}
+                </li>
+                <li class="list-group-item">
+                    <label>Evasion: </label>
+                    {{character.evasion}}
+                </li>
+                <li class="list-group-item">
+                    <label>Magical Evasion: </label>
+                    {{character.magicEvasion}}
+                </li>
+                <li class="list-group-item">
+                    <label>Base XP: </label>
+                    {{character.baseMonsterXP}}
+                </li>
+                <li class="list-group-item">
+                    <label>Base Gil: </label>
+                    {{character.baseMonsterGil}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <span class="label label-default">Senses</span>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    {{view Ember.Select
+                    content=model.senses
+                    optionValuePath="content.id"
+                    optionLabelPath="content.name"
+                    selection=controller.selectedSense
+                    class="form-control"
+                    }}
+
+                </li>
+                <li class="list-group-item">
+                    <button class="btn btn-success" {{ action addSense }}>Add Sense</button>
+                </li>
+                <li class="list-group-item">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Rating
+                            </th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#each item in character.otherSkills}}
+                        <tr>
+                            <td>
+                                {{ item.baseSkill.name}}
+                            </td>
+                            <td>
+                                {{input type="number" valueBinding="item.level" class="form-control"}}
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" {{ action removeSense item target="controller" }} value="X">
+                                <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                            </td>
+                        </tr>
+                        {{ else}}
+                        <tr>
+                            <td colspan="3">
+                                No senses added
+                            </td>
+                        </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            {{#each monsterAttack in character.monsterAttacks}}
+            {{#if monsterAttack.isAttack}}
+            <div class="panel panel-danger">
+                <div class="panel-heading">Monster Attack - {{ monsterAttack.name }}</div>
+                <div class="panel-body">
+                    <span class="label label-default">Basic Statistics</span>
+                    <div class="row" style="margin-bottom:20px;">
+                        <div class="col-md-6 col-lg-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <label>Name</label>
+                                    {{input type="text" valueBinding="monsterAttack.name" class="form-control"}}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <label>Action Type</label>
+                                    {{view Ember.Select
+                                    content=controllers.application.actionTypes
+                                    optionValuePath="content.id"
+                                    optionLabelPath="content.name"
+                                    value=monsterAttack.actionType
+                                    class="form-control"
+                                    }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    {{#if monsterAttack.isAttack}}
+                    <span class="label label-default">Attack Statistics</span>
+                    <div class="row" style="margin-bottom:20px;">
+                        <div class="col-md-6 col-lg-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <label>Attack Type</label>
+                                    {{view Ember.Select
+                                    content=controllers.application.attackTypes
+                                    optionValuePath="content.id"
+                                    optionLabelPath="content.name"
+                                    value=monsterAttack.attackType
+                                    class="form-control"
+                                    }}
+                                </li>
+                                <li class="list-group-item">
+                                    <label>Target</label>
+                                    {{view Ember.Select
+                                    content=controllers.application.targets
+                                    optionValuePath="content.id"
+                                    optionLabelPath="content.name"
+                                    value=monsterAttack.target
+                                    class="form-control"
+                                    }}
+                                </li>
+                                <li class="list-group-item">
+                                    <label>Is Random Target?</label>
+                                    {{input type="checkbox" checked=monsterAttack.isRandom class="form-control"}}
+                                </li>
+                                {{#if monsterAttack.doesDamage }}
+                                <li class="list-group-item">
+                                    <label>Damage Attribute</label>
+                                    {{view Ember.Select
+                                    content=controllers.application.skillsListAttributes
+                                    optionValuePath="content.id"
+                                    optionLabelPath="content.name"
+                                    value=monsterAttack.damageAttribute
+                                    class="form-control"
+                                    }}
+                                </li>
+                                <li class="list-group-item">
+                                    <label>Damage Type</label>
+                                    {{view Ember.Select
+                                    content=controllers.application.damageTypes
+                                    optionValuePath="content.id"
+                                    optionLabelPath="content.name"
+                                    value=monsterAttack.damageType
+                                    class="form-control"
+                                    }}
+                                </li>
+                                {{/if}}
+                            </ul>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <label>COS - Attribute</label>
+                                    {{view Ember.Select
+                                    content=controllers.application.combatStats
+                                    optionValuePath="content.id"
+                                    optionLabelPath="content.name"
+                                    value=monsterAttack.combatStat
+                                    class="form-control"
+                                    }}
+                                </li>
+                                <li class="list-group-item">
+                                    <label>COS - Modified By</label>
+                                    {{view Ember.Select
+                                    content=controllers.application.combatStatModifiers
+                                    optionValuePath="content.id"
+                                    optionLabelPath="content.name"
+                                    value=monsterAttack.combatStatModifier
+                                    class="form-control"
+                                    }}
+                                </li>
+                                {{#if monsterAttack.isSpecialAttack}}
+                                <li class="list-group-item">
+                                    <label>COS(Near-Fatal, Dispel, Status) - Attribute</label>
+                                    {{view Ember.Select
+                                    content=controllers.application.statusStats
+                                    optionValuePath="content.id"
+                                    optionLabelPath="content.name"
+                                    value=monsterAttack.statusStat
+                                    class="form-control"
+                                    }}
+                                </li>
+                                <li class="list-group-item">
+                                    <label>COS(Near-Fatal, Dispel, Status) - Modified By</label>
+                                    {{view Ember.Select
+                                    content=controllers.application.combatStatModifiers
+                                    optionValuePath="content.id"
+                                    optionLabelPath="content.name"
+                                    value=monsterAttack.statusStatModifier
+                                    class="form-control"
+                                    }}
+                                </li>
+                                {{/if}}
+
+                            </ul>
+                        </div>
+                    </div>
+                    {{/if}}
+                    <span class="label label-default">Modifiers</span>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>
+                                            XP Modifier
+                                        </th>
+                                        <th>
+                                            Gil Modifier
+                                        </th>
+                                        <th>
+                                            COS
+                                        </th>
+                                        <th>
+                                            Option
+                                        </th>
+                                        <th>
+
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {{#each modifier in monsterAttack.modifiers}}
+                                <tr>
+                                    <td>
+                                        {{modifier.modifier.name}}
+
+
+                                    </td>
+                                    <td>
+                                        {{#if modifier.modifier.isMultiplier}}x{{/if}}{{modifier.modifier.xpModifier}}
+                                    </td>
+                                    <td>
+                                        {{#if modifier.modifier.isMultiplier}}x{{/if}}{{modifier.modifier.gilModifier}}
+                                    </td>
+                                    <td>
+                                        {{modifier.modifier.cos}}
+                                    </td>
+                                    <td>
+                                        {{#if modifier.modifier.isCountdown}}
+                                            {{input type="number" min=1 max=6 valueBinding=modifier.option class="form-control"}}
+                                        {{/if}}
+                                        {{#if modifier.modifier.isClassOneStatus}}
+                                            {{view Ember.Select
+                                            content=controllers.application.classOneStatuses
+                                            optionValuePath="content.id"
+                                            optionLabelPath="content.name"
+                                            value=modifier.option
+                                            class="form-control"
+                                            }}
+                                        {{/if}}
+                                        {{#if modifier.modifier.isClassTwoStatus}}
+                                        {{view Ember.Select
+                                        content=controllers.application.classTwoStatuses
+                                        optionValuePath="content.id"
+                                        optionLabelPath="content.name"
+                                        value=modifier.option
+                                        class="form-control"
+                                        }}
+                                        {{/if}}
+                                        {{#if modifier.modifier.isClassThreeStatus}}
+                                        {{view Ember.Select
+                                        content=controllers.application.classThreeStatuses
+                                        optionValuePath="content.id"
+                                        optionLabelPath="content.name"
+                                        value=modifier.option
+                                        class="form-control"
+                                        }}
+                                        {{/if}}
+                                        {{#if modifier.modifier.isClassFourStatus}}
+                                        {{view Ember.Select
+                                        content=controllers.application.classFourStatuses
+                                        optionValuePath="content.id"
+                                        optionLabelPath="content.name"
+                                        value=modifier.option
+                                        class="form-control"
+                                        }}
+                                        {{/if}}
+                                        {{#if modifier.modifier.requiresElement}}
+                                            {{view Ember.Select
+                                                content=controllers.application.elements
+                                                optionValuePath="content.id"
+                                                optionLabelPath="content.name"
+                                                value=modifier.option
+                                                class="form-control"
+                                            }}
+                                        {{/if}}
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-danger" {{ action removeModifier monsterAttack modifier }}>X</button>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="4"></td>
+                                        <td>
+                                            {{#if monsterAttack.isAttack}}
+                                                {{view Ember.Select
+                                                content=controller.attackModifiers
+                                                optionValuePath="content.id"
+                                                optionLabelPath="content.name"
+                                                selection=controller.selectedModifier
+                                                class="form-control"
+                                                }}
+                                            {{/if}}
+                                            {{#if monsterAttack.isAbility}}
+                                                {{view Ember.Select
+                                                content=controller.abilityModifiers
+                                                optionValuePath="content.id"
+                                                optionLabelPath="content.name"
+                                                selection=controller.selectedModifier
+                                                class="form-control"
+                                                }}
+                                            {{/if}}
+                                            {{#if monsterAttack.isMagic}}
+                                                {{view Ember.Select
+                                                content=controller.magicModifiers
+                                                optionValuePath="content.id"
+                                                optionLabelPath="content.name"
+                                                selection=controller.selectedModifier
+                                                class="form-control"
+                                                }}
+                                            {{/if}}
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-success" {{ action addModifier monsterAttack }}>Add Modifier</button>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                        </div>
+                    </div>
+                    <span class="label label-default">Calculated Stats</span>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="list-group">
+                                {{#if monsterAttack.doesDamage }}
+                                    <li class="list-group-item">
+                                        <label>Current Damage Equation:</label>
+                                        {{ monsterAttack.currentDamageEquation}}
+                                    </li>
+
+                                <li class="list-group-item">
+                                    <label>Chance of Success: </label>
+                                    {{monsterAttack.chanceOfSuccess}}
+                                </li>
+                                {{/if}}
+                                <li class="list-group-item">
+                                    <label>Chance of Success(Near-Fatal, Dispel, Status): </label>
+                                    {{monsterAttack.statusChanceOfSuccess}}
+                                </li>
+                                <li class="list-group-item">
+                                    <label>Attack XP: </label>
+                                    {{monsterAttack.baseXP}}
+                                </li>
+                                <li class="list-group-item">
+                                    <label>Attack Gil: </label>
+                                    {{monsterAttack.baseGil}}
+                                </li>
+                                {{#if monsterAttack.hasChargeTime}}
+                                    <li class="list-group-item">
+                                        <label>Charge Time: </label>
+                                        {{monsterAttack.chargeTime}}
+                                    </li>
+                                {{/if}}
+                                {{#if monsterAttack.mpCost}}
+                                    <li class="list-group-item">
+                                        <label>Mana Cost: </label>
+                                        {{monsterAttack.mpCost}}
+                                    </li>
+                                {{/if}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer"><button class="btn btn-danger" {{ action removeMonsterAttack monsterAttack }}>Remove Attack</button></div>
+
+            </div>
+            {{/if}}
+            {{#if monsterAttack.isAbility}}
+            <div class="panel panel-success">
+            <div class="panel-heading">Monster Ability - {{ monsterAttack.name }}</div>
+            <div class="panel-body">
+            <span class="label label-default">Basic Statistics</span>
+            <div class="row" style="margin-bottom:20px;">
+                <div class="col-md-6 col-lg-6">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <label>Name</label>
+                            {{input type="text" valueBinding="monsterAttack.name" class="form-control"}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <label>Action Type</label>
+                            {{view Ember.Select
+                            content=controllers.application.actionTypes
+                            optionValuePath="content.id"
+                            optionLabelPath="content.name"
+                            value=monsterAttack.actionType
+                            class="form-control"
+                            }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <span class="label label-default">Modifiers</span>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                XP Modifier
+                            </th>
+                            <th>
+                                Gil Modifier
+                            </th>
+                            <th>
+                                Option
+                            </th>
+                            <th>
+                                Option 2
+                            </th>
+                            <th>
+
+                            </th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#each modifier in monsterAttack.modifiers}}
+                        <tr>
+                            <td>
+                                {{modifier.modifier.name}}
+
+                            </td>
+                            <td>
+                                {{#if modifier.modifier.isMultiplier}}x{{/if}}{{modifier.modifier.xpModifier}}
+                            </td>
+                            <td>
+                                {{#if modifier.modifier.isMultiplier}}x{{/if}}{{modifier.modifier.gilModifier}}
+                            </td>
+                            <td>
+                                {{#if modifier.modifier.isJobAbility}}
+                                    {{input type="text" placeholder="Job Ability Name" valueBinding=modifier.option class="form-control"}}
+                                {{/if}}
+                                {{#if modifier.modifier.isClassOneResistanceStatus}}
+                                {{view Ember.Select
+                                content=controllers.application.classOneResistanceStatuses
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                value=modifier.option
+                                class="form-control"
+                                }}
+                                {{/if}}
+                                {{#if modifier.modifier.isClassTwoResistanceStatus}}
+                                {{view Ember.Select
+                                content=controllers.application.classTwoResistanceStatuses
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                value=modifier.option
+                                class="form-control"
+                                }}
+                                {{/if}}
+                                {{#if modifier.modifier.isClassThreeResistanceStatus}}
+                                {{view Ember.Select
+                                content=controllers.application.classThreeResistanceStatuses
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                value=modifier.option
+                                class="form-control"
+                                }}
+                                {{/if}}
+                                {{#if modifier.modifier.isClassFourResistanceStatus}}
+                                {{view Ember.Select
+                                content=controllers.application.classFourResistanceStatuses
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                value=modifier.option
+                                class="form-control"
+                                }}
+                                {{/if}}
+                                {{#if modifier.modifier.isAutoStatusPositiveClassOne}}
+                                    {{view Ember.Select
+                                    content=controllers.application.classOnePositiveStatuses
+                                    optionValuePath="content.id"
+                                    optionLabelPath="content.name"
+                                    value=modifier.option
+                                    class="form-control"
+                                    }}
+                                {{/if}}
+                                {{#if modifier.modifier.isAutoStatusPositiveClassTwo}}
+                                {{view Ember.Select
+                                content=controllers.application.classTwoPositiveStatuses
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                value=modifier.option
+                                class="form-control"
+                                }}
+                                {{/if}}
+                                {{#if modifier.modifier.isAutoStatusPositiveClassThree}}
+                                {{view Ember.Select
+                                content=controllers.application.classThreePositiveStatuses
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                value=modifier.option
+                                class="form-control"
+                                }}
+                                {{/if}}
+                                {{#if modifier.modifier.isAutoStatusPositiveClassFour}}
+                                {{view Ember.Select
+                                content=controllers.application.classFourPositiveStatuses
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                value=modifier.option
+                                class="form-control"
+                                }}
+                                {{/if}}
+                                {{#if modifier.modifier.isAutoStatusNegativeClassOne}}
+                                {{view Ember.Select
+                                content=controllers.application.classOneNegativeStatuses
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                value=modifier.option
+                                class="form-control"
+                                }}
+                                {{/if}}
+                                {{#if modifier.modifier.isAutoStatusNegativeClassTwo}}
+                                {{view Ember.Select
+                                content=controllers.application.classTwoNegativeStatuses
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                value=modifier.option
+                                class="form-control"
+                                }}
+                                {{/if}}
+                                {{#if modifier.modifier.isAutoStatusNegativeClassThree}}
+                                {{view Ember.Select
+                                content=controllers.application.classThreeNegativeStatuses
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                value=modifier.option
+                                class="form-control"
+                                }}
+                                {{/if}}
+                                {{#if modifier.modifier.isAutoStatusNegativeClassFour}}
+                                {{view Ember.Select
+                                content=controllers.application.classFourNegativeStatuses
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                value=modifier.option
+                                class="form-control"
+                                }}
+                                {{/if}}
+                                {{#if modifier.modifier.isCountdown}}
+                                {{input type="number" min=1 max=6 valueBinding=modifier.option class="form-control"}}
+                                {{/if}}
+                                {{#if modifier.modifier.isClassOneStatus}}
+                                {{view Ember.Select
+                                content=controllers.application.classOneStatuses
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                value=modifier.option
+                                class="form-control"
+                                }}
+                                {{/if}}
+                                {{#if modifier.modifier.isClassTwoStatus}}
+                                {{view Ember.Select
+                                content=controllers.application.classTwoStatuses
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                value=modifier.option
+                                class="form-control"
+                                }}
+                                {{/if}}
+                                {{#if modifier.modifier.isClassThreeStatus}}
+                                {{view Ember.Select
+                                content=controllers.application.classThreeStatuses
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                value=modifier.option
+                                class="form-control"
+                                }}
+                                {{/if}}
+                                {{#if modifier.modifier.isClassFourStatus}}
+                                {{view Ember.Select
+                                content=controllers.application.classFourStatuses
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                value=modifier.option
+                                class="form-control"
+                                }}
+                                {{/if}}
+                                {{#if modifier.modifier.requiresElement}}
+                                    {{view Ember.Select
+                                    content=controllers.application.elements
+                                    optionValuePath="content.id"
+                                    optionLabelPath="content.name"
+                                    value=modifier.option
+                                    class="form-control"
+                                    }}
+                                {{/if}}
+                                {{#if modifier.modifier.isCounter}}
+                                    {{input type="text" placeholder="Triggers on" valueBinding=modifier.option class="form-control"}}
+                                {{/if}}
+                                {{#if modifier.modifier.isFinalAttack}}
+                                {{input type="text" placeholder="Triggers on" valueBinding=modifier.option class="form-control"}}
+                                {{/if}}
+                                {{#if modifier.modifier.requiresElement}}
+                                    {{view Ember.Select
+                                    content=controllers.application.elements
+                                    optionValuePath="content.id"
+                                    optionLabelPath="content.name"
+                                    value=modifier.option
+                                    class="form-control"
+                                    }}
+                                {{/if}}
+                                {{#if modifier.modifier.isCounterStatusClass1}}
+                                    {{view Ember.Select
+                                    content=controllers.application.classOnePositiveStatuses
+                                    optionValuePath="content.id"
+                                    optionLabelPath="content.name"
+                                    value=modifier.option
+                                    class="form-control"
+                                    }}
+                                {{/if}}
+                                {{#if modifier.modifier.isCounterStatusClass2}}
+                                {{view Ember.Select
+                                content=controllers.application.classTwoPositiveStatuses
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                value=modifier.option
+                                class="form-control"
+                                }}
+                                {{/if}}
+                                {{#if modifier.modifier.isCounterStatusClass3}}
+                                {{view Ember.Select
+                                content=controllers.application.classThreePositiveStatuses
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                value=modifier.option
+                                class="form-control"
+                                }}
+                                {{/if}}
+                                {{#if modifier.modifier.isCounterStatusClass4}}
+                                {{view Ember.Select
+                                content=controllers.application.classFourPositiveStatuses
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                value=modifier.option
+                                class="form-control"
+                                }}
+                                {{/if}}
+                                {{#if modifier.modifier.isFission}}
+                                {{view Ember.Select
+                                content=controllers.application.counterStatusList
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                value=modifier.option
+                                class="form-control"
+                                }}
+                                {{/if}}
+                            </td>
+                            <td>
+                                {{#if modifier.modifier.isWeakSpot}}
+                                    {{input type="text" placeholder="Triggers on" valueBinding=modifier.option2 class="form-control"}}
+                                {{else}}
+                                    {{#if modifier.modifier.isCounterStatus}}
+                                        {{view Ember.Select
+                                        content=controllers.application.counterStatusList
+                                        optionValuePath="content.id"
+                                        optionLabelPath="content.name"
+                                        value=modifier.option2
+                                        class="form-control"
+                                        }}
+                                    {{else}}
+                                        {{input type="text" placeholder="Extra text" valueBinding=modifier.option2 class="form-control"}}
+                                    {{/if}}
+                                {{/if}}
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" {{ action removeModifier monsterAttack modifier }}>X</button>
+                            </td>
+                        </tr>
+                        {{/each}}
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td>
+                                {{view Ember.Select
+                                content=controller.abilityModifiers
+                                optionValuePath="content.id"
+                                optionLabelPath="content.name"
+                                selection=controller.selectedModifier
+                                class="form-control"
+                                }}
+                            </td>
+                            <td>
+                                <button class="btn btn-success" {{ action addModifier monsterAttack }}>Add Modifier</button>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+            <span class="label label-default">Calculated Stats</span>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <label>Ability XP: </label>
+                            {{monsterAttack.baseXP}}
+                        </li>
+                        <li class="list-group-item">
+                            <label>Ability Gil: </label>
+                            {{monsterAttack.baseGil}}
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            </div>
+            <div class="panel-footer"><button class="btn btn-danger" {{ action removeMonsterAttack monsterAttack }}>Remove Attack</button></div>
+
+            </div>
+            {{/if}}
+            {{#if monsterAttack.isMagic}}
+            <div class="panel panel-info">
+                <div class="panel-heading">Monster Spell - {{ monsterAttack.name }}</div>
+                <div class="panel-body">
+                    <span class="label label-default">Basic Statistics</span>
+                    <div class="row" style="margin-bottom:20px;">
+                        <div class="col-md-6 col-lg-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <label>Name</label>
+                                    {{input type="text" valueBinding="monsterAttack.name" class="form-control"}}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <label>Action Type</label>
+                                    {{view Ember.Select
+                                    content=controllers.application.actionTypes
+                                    optionValuePath="content.id"
+                                    optionLabelPath="content.name"
+                                    value=monsterAttack.actionType
+                                    class="form-control"
+                                    }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <span class="label label-default">Modifiers</span>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        XP Modifier
+                                    </th>
+                                    <th>
+                                        Gil Modifier
+                                    </th>
+                                    <th>
+                                       Spell Name
+                                    </th>
+                                    <th>
+
+                                    </th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{#each modifier in monsterAttack.modifiers}}
+                                <tr>
+                                    <td>
+                                        {{modifier.modifier.name}}
+
+                                    </td>
+                                    <td>
+                                        {{#if modifier.modifier.isMultiplier}}x{{/if}}{{modifier.modifier.xpModifier}}
+                                    </td>
+                                    <td>
+                                        {{#if modifier.modifier.isMultiplier}}x{{/if}}{{modifier.modifier.gilModifier}}
+                                    </td>
+                                    <td>
+                                        {{input type="text" valueBinding="modifier.option" class="form-control"}}
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-danger" {{ action removeModifier monsterAttack modifier }}>X</button>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="3"></td>
+                                    <td>
+                                        {{view Ember.Select
+                                        content=controller.magicModifiers
+                                        optionValuePath="content.id"
+                                        optionLabelPath="content.name"
+                                        selection=controller.selectedModifier
+                                        class="form-control"
+                                        }}
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-success" {{ action addModifier monsterAttack }}>Add Modifier</button>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+
+                        </div>
+                    </div>
+                    <span class="label label-default">Calculated Stats</span>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="list-group">
+
+                                <li class="list-group-item">
+                                    <label>Attack XP: </label>
+                                    {{monsterAttack.baseXP}}
+                                </li>
+                                <li class="list-group-item">
+                                    <label>Attack Gil: </label>
+                                    {{monsterAttack.baseGil}}
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer"><button class="btn btn-danger" {{ action removeMonsterAttack monsterAttack }}>Remove Attack</button></div>
+
+            </div>
+            {{/if}}
+            {{/each}}
+            <button class="btn btn-success" {{ action addMonsterAttack }}>Add Monster Attack</button>
+        </div>
+    </div>
+    <div class="row" style="margin-top:30px;">
+        <div class="col-md-12 col-lg-12">
+            <span class="label label-default">Totals</span>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <label>Monster XP: </label>
+                    {{input type="text" valueBinding="character.totalMonsterXP" class="form-control"}}
+                </li>
+                <li class="list-group-item">
+                    <label>Monster Gil: </label>
+                    {{input type="text" valueBinding="character.totalMonsterGil" class="form-control"}}
+                </li>
+
+
+            </ul>
+
+        </div>
+    </div>
+</form>

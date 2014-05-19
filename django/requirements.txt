@@ -1,0 +1,14 @@
+Django==1.6.2
+Markdown==2.4
+South==0.8.4
+argparse==1.1
+django-cors-headers==0.12
+django-filter==0.7
+django-menu==0.1.8
+django-suit==0.2.6
+djangorestframework==2.3.13
+httplib2==0.8
+requests==2.2.1
+six==1.5.2
+pillow==2.3.0
+django-configurations==0.8

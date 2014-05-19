@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-lg-6 col-md-6">
+        <h2>Create a Character</h2>
+        <button class="btn btn-default" {{action 'create' }}>Create a New Character</button>
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <h2>Load a Character</h2>
+
+        <div class="row character-load">
+
+            {{#each item in model.justCharacters }}
+                <div class="col-md-4">
+                    {{#if item.characterImage }}
+                    <a href="javascript:;" class="link-cursor" {{action 'load' item}}><img  class="img-rounded" {{ bind-attr src=item.characterImage.image}}/></a>
+                    {{else}}
+                    <a href="javascript:;" class="btn btn-default center-block" {{action 'load' item}}>{{ item.name }}</a>
+
+                    {{/if}}
+                </div>
+            {{else}}
+                <div class="col-md-12">No characters found</div>
+            {{/each}}
+
+        </div>
+    </div>
+</div>
+{{#if model.profile.canCreateMonsters}}
+<div class="row">
+    <div class="col-lg-6 col-md-6">
+        <h2>Create a Monster</h2>
+        <button class="btn btn-default" {{action 'createMonster' }}>Create a New Monster</button>
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <h2>Load a Monster</h2>
+
+        <div class="row character-load">
+
+            {{#each item in model.monsters }}
+            <div class="col-md-4">
+                {{#if item.characterImage }}
+                <a href="javascript:;" class="link-cursor" {{action 'load' item}}><img  class="img-rounded" {{ bind-attr src=item.characterImage.image}}/></a>
+                {{else}}
+                <a href="javascript:;" class="btn btn-default center-block" {{action 'loadMonster' item}}>{{ item.name }}</a>
+
+                {{/if}}
+            </div>
+            {{else}}
+            <div class="col-md-12">No monsters found</div>
+            {{/each}}
+
+        </div>
+    </div>
+</div>
+{{/if}}

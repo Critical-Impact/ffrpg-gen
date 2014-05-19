@@ -1,0 +1,24 @@
+{
+  "name": "FFRPGEmber",
+  "version": "0.1.0",
+  "dependencies": {
+    "bootstrap-sass": "~3.0.0",
+    "momentjs": "~2.4.0",
+    "ember-simple-auth": "https://github.com/simplabs/ember-simple-auth-component.git",
+    "ember-addons.bs_for_ember": "~> 0.6.0",
+    "jquery": "~2.0.0",
+    "fastclick": "~0.6.10",
+    "mathjs": "~0.18.1",
+    "ember-inplace-edit": "https://github.com/Critical-Impact/ember-inplace-edit.git",
+    "ember": "~1.5.0",
+    "ember-data": "~1.0.0-beta.7",
+    "jquery-ui": "~1.10.4",
+    "jquery-ui-touch-punch": "*",
+    "jcrop": "~0.9.12",
+    "hint.css": "~1.3.1",
+    "select2": "~3.4.8"
+  },
+  "devDependencies": {
+    "ember-mocha-adapter": "0.1.2"
+  }
+}

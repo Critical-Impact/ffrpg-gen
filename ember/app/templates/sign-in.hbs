@@ -1,0 +1,43 @@
+<form {{action 'authenticate' on='submit'}}>
+<div class="control-group">
+    <div class="control-label">
+        <label>Username</label>
+    </div>
+
+    <div class="controls">
+        {{input value=identification type="text"}}
+    </div>
+</div>
+
+<div class="control-group">
+    <div class="control-label">
+        <label>Password</label>
+    </div>
+
+    <div class="controls">
+        {{input value=password type="password"}}
+    </div>
+</div>
+
+<div class="control-group">
+    <div class="control-label">
+        <label>Remember Me?</label>
+    </div>
+
+    <div class="controls">
+        {{input checked=remember type="checkbox"}}
+    </div>
+</div>
+
+{{#if errorMessage}}
+<div class="alert alert-danger">
+    <p>
+        <strong>Login failed:</strong> <code>{{errorMessage}}</code>
+    </p>
+</div>
+{{/if}}
+
+
+<button type="submit" class="btn">Log in!</button>
+
+</form>

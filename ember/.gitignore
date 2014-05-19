@@ -1,0 +1,10 @@
+node_modules
+temp
+dist
+.sass-cache
+.tmp
+app/bower_components
+app/scripts/auth/auth_config.js
+dist/*
+.idea
+app/scripts/config.js

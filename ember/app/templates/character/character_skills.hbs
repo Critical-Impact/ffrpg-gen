@@ -1,0 +1,160 @@
+<form role="form">
+    <div class="form-group">
+
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+            <h3>Skills</h3>
+            <span class="label label-default">Remaining Skill Points</span>
+            <input {{bind-attr value=character.remainingSkillPoints}} class="form-control" type="number" disabled="disabled"/>      <br>
+            <span class="label label-default">Remaining Free Language/Lore Points</span>
+            <input {{bind-attr value=character.remainingLoreLanguagePoints}} class="form-control" type="number" disabled="disabled"/>  <br>
+            <span class="label label-default">Current Skills</span>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Attribute
+                        </th>
+                        <th>
+                            Rating
+                        </th>
+                        <th>
+                            Specialization
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each item in character.otherSkills}}
+                    <tr>
+                        <td>
+                            {{ item.baseSkill.name}}
+                        </td>
+                        <td>
+                            {{ item.baseSkill.attribute }}
+                        </td>
+                        <td>
+                            {{input type="number" valueBinding="item.level" class="form-control"}}
+                        </td>
+                        <td>
+                            {{#if item.baseSkill.specialized }} {{input type="text" valueBinding="item.specialization" class="form-control"}} {{/if}}
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" {{ action remove_skill item target="controller" }} value="X">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    {{ else}}
+                    <tr>
+                        <td colspan="4">
+                            No skills added
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <span class="label label-default">Lore and Languages</span>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Attribute
+                    </th>
+                    <th>
+                        Rating
+                    </th>
+                    <th>
+                        Specialization
+                    </th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each item in character.loreLanguageSkills}}
+                <tr>
+                    <td>
+                        {{ item.baseSkill.name}}
+                    </td>
+                    <td>
+                        {{ item.baseSkill.attribute }}
+                    </td>
+                    <td>
+                        {{input type="number" valueBinding="item.level" class="form-control"}}
+                    </td>
+                    <td>
+                        {{#if item.baseSkill.specialized }} {{input type="text" valueBinding="item.specialization" class="form-control"}} {{/if}}
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" {{ action remove_skill item target="controller" }} value="X">
+                        <span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                    </td>
+                </tr>
+                {{ else}}
+                <tr>
+                    <td colspan="4">
+                        No skills added
+                    </td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6 col-lg-6">
+            <h3>Skills List</h3>
+            <span class="label label-default">General Skills</span>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Attribute
+                    </th>
+                    <th>
+                        Aptitude
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each item in model.baseSkills}}
+                <tr>
+                    <td>
+                        {{#if item.halfRate}}<b>{{/if}}{{ item.name}}{{#if item.specialized}}*{{/if}}{{#if item.halfRate}}</b>{{/if}}
+                    </td>
+                    <td>
+                        {{#if item.halfRate}}<b>{{/if}}{{ item.attribute }}{{#if item.halfRate}}</b>{{/if}}
+                    </td>
+                    <td>
+                       {{#if item.halfRate}}<b>{{/if}}{{ item.aptitude.name }}{{#if item.halfRate}}</b>{{/if}}
+                    </td>
+                    <td>
+                        <button class="btn btn-success" {{ action add_skill item target="controller" }} value="+">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </td>
+                </tr>
+                {{ else}}
+                <tr>
+                    <td colspan="4">
+                        No skills added
+                    </td>
+                </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>

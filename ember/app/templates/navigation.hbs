@@ -1,0 +1,78 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            {{#if session.user.profile.currentCharacter}}
+
+            <button class="btn btn-default navbar-btn visible-xs small-save" {{ action save target="view" }}>
+            <span class="glyphicon glyphicon-floppy-disk"></span> Save
+            </button>
+
+            {{/if}}
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">FFRPG</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class='nav navbar-nav'>
+            {{#if session.user.profile.currentCharacter}}
+                {{#if session.user.profile.currentCharacter.isMonster}}
+                    {{#link-to 'monster.edit' tagName='li'}}<a  href="javascript:;" {{bind-attr href="view.href"}}>Monster</a>{{/link-to}}
+                    {{#link-to 'monster.print' tagName='li'}}<a  href="javascript:;" {{bind-attr href="view.href"}}>Print</a>{{/link-to}}
+                {{else}}
+                    {{#link-to 'character.edit' tagName='li'}}<a  href="javascript:;" {{bind-attr href="view.href"}}>Character</a>{{/link-to}}
+                    {{#link-to 'character.skills' tagName='li'}}<a href="javascript:;" {{bind-attr href="view.href"}}>Skills</a>{{/link-to}}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Equipment <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            {{#link-to 'character.weapons' tagName='li'}}<a href="javascript:;" {{bind-attr href="view.href"}}>Weapons</a>{{/link-to}}
+                            {{#link-to 'character.armour' tagName='li'}}<a href="javascript:;" {{bind-attr href="view.href"}}>Armour</a>{{/link-to}}
+                            {{#link-to 'character.accessories' tagName='li'}}<a href="javascript:;" {{bind-attr href="view.href"}}>Accessories</a>{{/link-to}}
+                            {{#link-to 'character.items' tagName='li'}}<a href="javascript:;" {{bind-attr href="view.href"}}>Items</a>{{/link-to}}
+                        </ul>
+                    </li>
+                    {{#link-to 'character.extras' tagName='li'}}<a href="javascript:;" {{bind-attr href="view.href"}}>Extras</a>{{/link-to}}
+                    <li class="dropdown" >
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Foundry <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            {{#link-to 'foundry.createItem' tagName='li'}}<a href="javascript:;" {{bind-attr href="view.href"}}>Item Creator</a>{{/link-to}}
+                        </ul>
+                    </li>
+                {{/if}}
+            {{/if}}
+
+
+
+
+
+
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                {{#if session.user}}
+                {{#link-to 'main-menu.home' tagName='li'}}<a href="javascript:;" {{bind-attr href="view.href"}}>Create/Load</a>{{/link-to}}
+                {{#link-to 'settings' tagName='li'}}<a href="javascript:;" {{bind-attr href="view.href"}}>Settings</a>{{/link-to}}
+                {{#link-to 'change-log' tagName='li'}}<a href="javascript:;" {{bind-attr href="view.href"}}>Change Log</a>{{/link-to}}
+                {{/if}}
+            {{#if session.isAuthenticated}}
+                <li><a href="javascript:;" {{ action 'invalidateSession' }} {{bind-attr href="view.href"}}>Sign Out</a></li>
+            {{else}}
+                <li><a href="javascript:;" {{ action 'authenticateSession' }} {{bind-attr href="view.href"}}>Sign In</a></li>
+            {{/if}}
+            {{#if session.user.profile.currentCharacter}}
+            <li class="hidden-xs">
+                <button class="btn btn-default navbar-btn" {{ action save target="view" }}>
+                    <span class="glyphicon glyphicon-floppy-disk"></span> Save
+                </button>
+            </li>
+            {{/if}}
+            </ul>
+
+        </div>
+
+
+    </div>
+</div>
